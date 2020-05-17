@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Stimming</title>
+<meta name="description" content="">
+<script type="text/javascript">
+	function sprawdz()
+	{
+	const xml = document.getElementById("pole").value;
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(xml, 'application/xml');
+	const output = Array.from(doc.getElementsByTagName('base')).map((base) => base.childNodes[0].nodeValue);
+	document.getElementById("wynik").innerHTML = output.join(' ');
+	}
+</script>
+<style>
+*, html {
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:'Lucida Sans Unicode','Lucida Grande',verdana,sans-serif;
+	font-size:0.8em;
+	color:#333333;
+	margin:0 auto;
+	padding:0;
+	background-color:#dddddd;
+}
+div.wrapper {
+	width:96%;
+	max-width:800px;
+	padding:5px;
+	margin:50px auto 10px auto;
+}
+div.post {
+	background-color:#ffffff;
+	border:1px solid #cccccc;
+	padding:7px;
+	margin:10px 0;
+}
+</style>
+</head>
+
+
+<body>
+<div class="wrapper">
+<h1>Konwerter</h1>
+<textarea rows="30" cols="111" id="pole"></textarea><br />
+<input type="submit" value="KONWERTUJ" onclick="sprawdz()" />
+
+<div class="post">
+<div class="post-content" id="wynik">PRZEKONWERTOWANY TEKST</div>
+</div>
+</div>
+</body>
+</hrml>
